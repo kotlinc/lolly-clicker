@@ -26,7 +26,7 @@ gSnakeButton.addEventListener("click", () => {
     console.log("Sufficient lollies")
     lollies -= gSnakePrice;
     gSnakePrice *= increment;
-    passive += gSnakeRate;
+    passiveLolliea += gSnakeRate;
     gSnakeCost.textContent = gSnakePrice.toFixed(1);
     lollyCount.textContent = lollies.toFixed(1);
     passiveLollyCount.textContent = passiveLollies.toFixed(1);
