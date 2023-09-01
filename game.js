@@ -1,4 +1,4 @@
-ortimport { clickPower } from './upgrades.js'
+import { clickPower } from './upgrades.js'
 
 let lollies = 0;
 const lollyButton = document.getElementById("lButton")
