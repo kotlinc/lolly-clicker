@@ -17,6 +17,18 @@ var hmLollyCount = document.getElementById("hmLolly-count");
 var hmLolliesOwned = 0;
 var hmLollyRate = 3;
 var hmLollyPrice = 100;
+var lollyArtistButton = document.getElementById("lollyArtist");
+var lollyArtistCost = document.getElementById("lollyArtist-price");
+var lollyArtistCount = document.getElementById("lollyArtist-count");
+var lollyArtistsOwned = 0;
+var lollyArtistRate = 17.5;
+var lollyArtistPrice = 750;
+var facButton = document.getElementById("fac");
+var facCost = document.getElementById("fac-price");
+var facCount = document.getElementById("fac-count");
+var facsOwned = 0;
+var facRate = 17.5;
+var facPrice = 750;
 lollyButton === null || lollyButton === void 0 ? void 0 : lollyButton.addEventListener("click", function () {
     if (lollyCount == null) {
         console.log("Lolly Count is null");
@@ -42,7 +54,6 @@ function buygSnake() {
         gSnakeCount.textContent = String(gSnakesOwned);
     }
 }
-gSnakeButton === null || gSnakeButton === void 0 ? void 0 : gSnakeButton.addEventListener("click", buygSnake);
 function buyHmLolly() {
     if (hmLollyCost == null || lollyCount == null || passiveLollyCount == null || hmLollyCount == null) {
         return;
@@ -59,7 +70,42 @@ function buyHmLolly() {
         hmLollyCount.textContent = String(hmLolliesOwned);
     }
 }
+function buyLollyArtist() {
+    if (lollyArtistCost == null || lollyCount == null || passiveLollyCount == null || lollyArtistCount == null) {
+        return;
+    }
+    if (lollies >= lollyArtistPrice) {
+        console.log("Sufficient lollies");
+        lollyArtistsOwned++;
+        lollies -= lollyArtistPrice;
+        lollyArtistPrice *= increment;
+        passiveLollies += lollyArtistRate;
+        lollyArtistCost.textContent = lollyArtistPrice.toFixed(1);
+        lollyCount.textContent = lollies.toFixed(1);
+        passiveLollyCount.textContent = passiveLollies.toFixed(1);
+        lollyArtistCount.textContent = String(hmLolliesOwned);
+    }
+}
+function buyFac() {
+    if (facCost == null || lollyCount == null || passiveLollyCount == null || facCount == null) {
+        return;
+    }
+    if (lollies >= facPrice) {
+        console.log("Sufficient lollies");
+        facsOwned++;
+        lollies -= facPrice;
+        facPrice *= increment;
+        passiveLollies += facRate;
+        facCost.textContent = facPrice.toFixed(1);
+        lollyCount.textContent = lollies.toFixed(1);
+        passiveLollyCount.textContent = passiveLollies.toFixed(1);
+        facCount.textContent = String(hmLolliesOwned);
+    }
+}
+gSnakeButton === null || gSnakeButton === void 0 ? void 0 : gSnakeButton.addEventListener("click", buygSnake);
 hmLollyButton === null || hmLollyButton === void 0 ? void 0 : hmLollyButton.addEventListener("click", buyHmLolly);
+lollyArtistButton === null || lollyArtistButton === void 0 ? void 0 : lollyArtistButton.addEventListener("click", buyLollyArtist);
+facButton === null || facButton === void 0 ? void 0 : facButton.addEventListener("click", buyFac);
 setInterval(function () {
     if (lollyCount == null) {
         console.log("Lolly Count is null");

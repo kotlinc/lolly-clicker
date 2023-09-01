@@ -22,6 +22,20 @@ let hmLolliesOwned: number = 0;
 let hmLollyRate: number = 3;
 let hmLollyPrice: number = 100;
 
+const lollyArtistButton: HTMLElement | null = document.getElementById("lollyArtist")
+const lollyArtistCost: HTMLElement | null = document.getElementById("lollyArtist-price")
+let lollyArtistCount: HTMLElement | null = document.getElementById("lollyArtist-count")
+let lollyArtistsOwned: number = 0;
+let lollyArtistRate: number = 17.5;
+let lollyArtistPrice: number = 750;
+
+const facButton: HTMLElement | null = document.getElementById("fac")
+const facCost: HTMLElement | null = document.getElementById("fac-price")
+let facCount: HTMLElement | null = document.getElementById("fac-count")
+let facsOwned: number = 0;
+let facRate: number = 17.5;
+let facPrice: number = 750;
+
 lollyButton?.addEventListener("click", () => {
   if (lollyCount == null) {
     console.log("Lolly Count is null")
@@ -48,8 +62,6 @@ function buygSnake() {
   }
 }
 
-gSnakeButton?.addEventListener("click", buygSnake)
-
 function buyHmLolly() {
   if (hmLollyCost == null || lollyCount == null || passiveLollyCount == null || hmLollyCount == null) {
     return
@@ -67,7 +79,44 @@ function buyHmLolly() {
   }
 }
 
+function buyLollyArtist() {
+  if (lollyArtistCost == null || lollyCount == null || passiveLollyCount == null || lollyArtistCount == null) {
+    return
+  }
+  if (lollies >= lollyArtistPrice) {
+    console.log("Sufficient lollies")
+    lollyArtistsOwned++
+    lollies -= lollyArtistPrice;
+    lollyArtistPrice *= increment;
+    passiveLollies += lollyArtistRate;
+    lollyArtistCost.textContent = lollyArtistPrice.toFixed(1);
+    lollyCount.textContent = lollies.toFixed(1);
+    passiveLollyCount.textContent = passiveLollies.toFixed(1);
+    lollyArtistCount.textContent = String(hmLolliesOwned);
+  }
+}
+
+function buyFac() {
+  if (facCost == null || lollyCount == null || passiveLollyCount == null || facCount == null) {
+    return
+  }
+  if (lollies >= facPrice) {
+    console.log("Sufficient lollies")
+    facsOwned++
+    lollies -= facPrice;
+    facPrice *= increment;
+    passiveLollies += facRate;
+    facCost.textContent = facPrice.toFixed(1);
+    lollyCount.textContent = lollies.toFixed(1);
+    passiveLollyCount.textContent = passiveLollies.toFixed(1);
+    facCount.textContent = String(hmLolliesOwned);
+  }
+}
+
+gSnakeButton?.addEventListener("click", buygSnake)
 hmLollyButton?.addEventListener("click", buyHmLolly)
+lollyArtistButton?.addEventListener("click", buyLollyArtist)
+facButton?.addEventListener("click", buyFac)
 
 setInterval(() => {
   if (lollyCount == null) {
