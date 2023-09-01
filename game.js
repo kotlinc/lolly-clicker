@@ -4,7 +4,7 @@ let lollies = 0;
 const lollyButton = document.getElementById("lButton")
 const lollyCount = document.getElementById("lollies")
 
-lollyButton.addEventListener("click" () => {
+lollyButton.addEventListener("click", () => {
   lollies += clickPower;
   lollyCount.textContent = lollies;
-})
+});
