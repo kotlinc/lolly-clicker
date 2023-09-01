@@ -1,4 +1,4 @@
-import { lollies } from './game.js'
+import { lollies, lollyCount } from './game.js'
 import { increment } from './upgrade.js'
 
 let passiveLollies = 0;
@@ -13,10 +13,14 @@ let gSnakePrice = 10;
 gSnakeButton.addEventListener("click", () => {
   if (lollies >= gSnakePrice) {
     lollies -= gSnakePrice;
-    
+    gSnakePrice *= increment;
+    passive += gSnakeRate;
+    gSnakeCost.textContent = gSnakePrice.toFixed(1);
+    lollyCount.textContent = lollies.toFixed(1);
   }
 })
 
 setInterval(() => {
   lollies += passiveLollies;
+  lollyCount.textContent = lollies.toFixed(1);
 }, 1000);
