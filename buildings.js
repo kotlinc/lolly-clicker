@@ -12,7 +12,9 @@ let gSnakeRate = 0.2;
 let gSnakePrice = 10;
 
 gSnakeButton.addEventListener("click", () => {
+  console.log("Event listener worked")
   if (lollies >= gSnakePrice) {
+    console.log("Sufficient lollies")
     lollies -= gSnakePrice;
     gSnakePrice *= increment;
     passive += gSnakeRate;
@@ -23,6 +25,7 @@ gSnakeButton.addEventListener("click", () => {
 })
 
 setInterval(() => {
+  console.log("Lollies Per Second is working")
   lollies += passiveLollies;
   lollyCount.textContent = lollies.toFixed(1);
 }, 1000);
