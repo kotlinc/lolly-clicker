@@ -2,6 +2,9 @@ let lollies = 0;
 const lollyButton = document.getElementById("lButton")
 const lollyCount = document.getElementById("lollies")
 
+let clickPower = 1;
+let increment = 1.3;
+
 const passiveLollyCount = document.getElementById("lolliesPSec")
 let passiveLollies = 0;
 
