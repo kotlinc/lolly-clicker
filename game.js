@@ -90,7 +90,7 @@ function buyLollyArtist() {
         lollyArtistCost.textContent = lollyArtistPrice.toFixed(1);
         lollyCount.textContent = lollies.toFixed(1);
         passiveLollyCount.textContent = passiveLollies.toFixed(1);
-        lollyArtistCount.textContent = String(hmLolliesOwned);
+        lollyArtistCount.textContent = String(lollyArtistsOwned);
     }
 }
 function buyFac() {
@@ -106,7 +106,7 @@ function buyFac() {
         facCost.textContent = facPrice.toFixed(1);
         lollyCount.textContent = lollies.toFixed(1);
         passiveLollyCount.textContent = passiveLollies.toFixed(1);
-        facCount.textContent = String(hmLolliesOwned);
+        facCount.textContent = String(facsOwned);
     }
 }
 function buySugar() {
@@ -151,7 +151,7 @@ function buyBetterMouse() {
     if (lollies >= sugarPrice) {
         console.log("Sufficient lollies");
         lollies -= sugarPrice;
-        clickPower = 10;
+        clickPower = 20;
         lollyCount.textContent = lollies.toFixed(1);
         betterMouseButton.style.display = "none";
     }
