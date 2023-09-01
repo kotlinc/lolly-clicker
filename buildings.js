@@ -1,6 +1,7 @@
 import { lollies, lollyCount } from './game.js'
 import { increment } from './upgrade.js'
 
+export const passiveLollyCount = document.getElementById("lolliesPSec")
 let passiveLollies = 0;
 
 const gSnakeButton = document.getElementById("gSnake")
@@ -17,6 +18,7 @@ gSnakeButton.addEventListener("click", () => {
     passive += gSnakeRate;
     gSnakeCost.textContent = gSnakePrice.toFixed(1);
     lollyCount.textContent = lollies.toFixed(1);
+    passiveLollyCount.textContent = passiveLollies.toFixed(1);
   }
 })
 
