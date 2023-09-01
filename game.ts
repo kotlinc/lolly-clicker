@@ -33,7 +33,7 @@ const facButton: HTMLElement | null = document.getElementById("fac")
 const facCost: HTMLElement | null = document.getElementById("fac-price")
 let facCount: HTMLElement | null = document.getElementById("fac-count")
 let facsOwned: number = 0;
-let facRate: number = 17.5;
+let facRate: number = 175;
 let facPrice: number = 750;
 
 const sugarButton: HTMLElement | null = document.getElementById("sugar")
