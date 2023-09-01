@@ -1,3 +1,4 @@
+var story = document.getElementById("story");
 var lollies = 0;
 var lollyButton = document.getElementById("lButton");
 var lollyCount = document.getElementById("lollies");
@@ -33,6 +34,8 @@ var sugarButton = document.getElementById("sugar");
 var sugarPrice = 1000;
 var fakeSugarButton = document.getElementById("fakeSugar");
 var fakeSugarPrice = 1000;
+var betterMouseButton = document.getElementById("betterMouse");
+var betterMousePrice = 15000;
 lollyButton === null || lollyButton === void 0 ? void 0 : lollyButton.addEventListener("click", function () {
     if (lollyCount == null) {
         console.log("Lolly Count is null");
@@ -141,12 +144,25 @@ function buyFakeSugar() {
         fakeSugarButton.style.display = "none";
     }
 }
+function buyBetterMouse() {
+    if (lollyCount == null || passiveLollyCount == null || betterMouseButton == null) {
+        return;
+    }
+    if (lollies >= sugarPrice) {
+        console.log("Sufficient lollies");
+        lollies -= sugarPrice;
+        clickPower = 10;
+        lollyCount.textContent = lollies.toFixed(1);
+        betterMouseButton.style.display = "none";
+    }
+}
 gSnakeButton === null || gSnakeButton === void 0 ? void 0 : gSnakeButton.addEventListener("click", buygSnake);
 hmLollyButton === null || hmLollyButton === void 0 ? void 0 : hmLollyButton.addEventListener("click", buyHmLolly);
 lollyArtistButton === null || lollyArtistButton === void 0 ? void 0 : lollyArtistButton.addEventListener("click", buyLollyArtist);
 facButton === null || facButton === void 0 ? void 0 : facButton.addEventListener("click", buyFac);
 sugarButton === null || sugarButton === void 0 ? void 0 : sugarButton.addEventListener("click", buySugar);
 fakeSugarButton === null || fakeSugarButton === void 0 ? void 0 : fakeSugarButton.addEventListener("click", buyFakeSugar);
+betterMouseButton === null || betterMouseButton === void 0 ? void 0 : betterMouseButton.addEventListener("click", buyBetterMouse);
 setInterval(function () {
     if (lollyCount == null) {
         console.log("Lolly Count is null");
@@ -156,3 +172,37 @@ setInterval(function () {
         lollyCount.textContent = lollies.toFixed(1);
     }
 }, 1000);
+setInterval(function () {
+    if (lollies < 100 && story != null) {
+        var stories = [
+            "You decide to start making lollies.",
+            "You offer your family some of your lollies. They leave without a response.",
+            "Your first batch goes straight into the bin. Not even flies go near it."
+        ];
+        story.textContent = stories[Math.floor(Math.random() * stories.length)];
+    }
+    else if (lollies < 500 && lollies > 100 && story != null) {
+        var stories = [
+            "You start selling lollies to your neighbour. You suspect he is giving them to his cats.",
+            "You offer your family some of your lollies. They decide to try one.",
+            "You think your friends are selling your lollies on eBay."
+        ];
+        story.textContent = stories[Math.floor(Math.random() * stories.length)];
+    }
+    else if (lollies < 10000 && lollies > 500 && story != null) {
+        var stories = [
+            "Your lollies are getting popular in your town.",
+            "Your family now asks for lollies because they say they taste good.",
+            "Your friends are making mysterious profits. Maybe they did sell your lollies..."
+        ];
+        story.textContent = stories[Math.floor(Math.random() * stories.length)];
+    }
+    else if (lollies > 10000 && story != null) {
+        var stories = [
+            "People come from far away to get a taste of your lollies.",
+            "You decided to put one of your lollies up for auction. Someone bidded $43 000 for one.",
+            "There is a museum with your first ever lolly. It isn't popular, but it is there. You go every day."
+        ];
+        story.textContent = stories[Math.floor(Math.random() * stories.length)];
+    }
+}, 10000);

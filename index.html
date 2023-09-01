@@ -1,115 +1,156 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      h1, b, p, button {
-        font-family: arial;
-      }
-      #lolly {
-        border-radius: 100%;
-      }
-      li {
-        list-style-type: none
-      }
-      button {
-        background-color: transparent;
-        border-color: transparent;
-      }
-      .buy {
-        background-color: #237CC3;
-        color: white;
-        border-radius: 10%;
-      }
-      #buildings {
-        display: inline;
-      }
-      #store {
-        display: flex;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Lolly Clicker</h1>
-    </header>
-    <b>Click the lolly to get lollies</b>
-    <button id="lButton"><img id="lolly" width="500px" height="500px" src="https://media.istockphoto.com/photos/blue-wrapped-candy-picture-id477465492?k=6&m=477465492&s=170667a&w=0&h=RGOo7bTrORCUAI7lwGNLmR8wsGIxNZ0N2aU_yiTqIfo="/></button>
-    <div id="store">
-      <div id="buildings">
-        <ul>
-          <li class="stats">
-            <b><span id="lollies">0</span> Lollies</b>
-            <br/>
-            <b><span id="lolliesPSec">0</span> Lollies Per Second</b>
-          </li>
-          <li class="sep">
-            <b>-------------------------------------------------</b>
-          </li>
-          <li class="item">
-            <b>Gummy Snake</b>
-            <p><span id="gSnake-price">10</span> Lollies</p>
-            <p><span id="gSnake-count">0</span> Owned</p>
-            <p class="desc">A gummy snake to get you lollies.</p>
-            <b><span id="gSnake-lps">0.2</span> lollies/sec</b>
-            <br/>
-            <button class="buy" id="gSnake">Buy</button>
-          </li>
-          <li class="sep">
-            <b>-------------------------------------------------</b>
-          </li>
-          <li class="item">
-            <b>Homemade Lolly</b>
-            <p id="hmLolly-price">100 Lollies</p>
-            <p><span id="hmLolly-count">0</span> Owned</p>
-            <p class="desc">Homemade lollies are better than store bought ones!</p>
-            <b><span id="hmLolly-lps">3</span> lollies/sec</b>
-            <button class="buy" id="hmLolly">Buy</button>
-          </li>
-          <li class="sep">
-            <b>-------------------------------------------------</b>
-          </li>
-          <li class="item">
-            <b>Lolly Artist</b>
-            <p><span id="lollyArtist-price">750</span> Lollies</p>
-            <p><span id="lollyArtist-count">0</span> Owned</p>
-            <p class="desc">A personal Lolly Artist!</p>
-            <b><span id="lollyArtist-lps">17.5</span> lollies/sec</b>
-            <button class="buy" id="lollyArtist">Buy</button>
-          </li>
-          <li class="sep">
-            <b>-------------------------------------------------</b>
-          </li>
-          <li class="item">
-            <b>Lolly Factory</b>
-            <p><span id="fac-price">5000</span> Lollies</p>
-            <p><span id="fac-count">0</span> Owned</p>
-            <p class="desc">A Lolly Factory!</p>
-            <b><span id="fac-lps">175</span> lollies/sec</b>
-            <button class="buy" id="fac">Buy</button>
-          </li>
-        </ul>
-      </div>
-      <div id="upgrades">
-        <ul>
-          <li class="item">
-            <b>Sugar</b>
-            <p>1000 Lollies</p>
-            <p class="desc">Sugar for your lollies!</p>
-            <button class="buy" id="sugar">Buy</button>
-          </li>
-          <li class="sep">
-            <b>--------------------------------------</b>
-          </li>
-          <li class="item">
-            <b>Artificial Sweeteners</b>
-            <p>7500 Lollies</p>
-            <p class="desc">Artificial sweetener for your lollies!</p>
-            <button class="buy" id="fakeSugar">Buy</button>
-          </li>
-        </ul>
-      </div>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    h1,
+    b,
+    p,
+    button {
+      font-family: arial;
+    }
+
+    .story-block {
+      width: 100vw;
+      left: 0;
+      bottom 0;
+      background-color: #237CC3;
+      color: white;
+      height: auto;
+      position: absolute;
+    }
+
+    #story {
+      margin-left: 7.5px;
+    }
+
+    #lolly {
+      border-radius: 100%;
+    }
+
+    li {
+      list-style-type: none
+    }
+
+    button {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    .buy {
+      background-color: #237CC3;
+      color: white;
+      border-radius: 10%;
+    }
+
+    #buildings {
+      display: inline;
+    }
+
+    #store {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Lolly Clicker</h1>
+  </header>
+  <b>Click the lolly to get lollies</b>
+  <button id="lButton"><img id="lolly" width="500px" height="500px"
+      src="https://media.istockphoto.com/photos/blue-wrapped-candy-picture-id477465492?k=6&m=477465492&s=170667a&w=0&h=RGOo7bTrORCUAI7lwGNLmR8wsGIxNZ0N2aU_yiTqIfo=" /></button>
+  <div id="store">
+    <div id="buildings">
+      <ul>
+        <li class="stats">
+          <b><span id="lollies">0</span> Lollies</b>
+          <br />
+          <b><span id="lolliesPSec">0</span> Lollies Per Second</b>
+        </li>
+        <li class="sep">
+          <b>-------------------------------------------------</b>
+        </li>
+        <li class="item">
+          <b>Gummy Snake</b>
+          <p><span id="gSnake-price">10</span> Lollies</p>
+          <p><span id="gSnake-count">0</span> Owned</p>
+          <p class="desc">A gummy snake to get you lollies.</p>
+          <b><span id="gSnake-lps">0.2</span> lollies/sec</b>
+          <br />
+          <button class="buy" id="gSnake">Buy</button>
+        </li>
+        <li class="sep">
+          <b>-------------------------------------------------</b>
+        </li>
+        <li class="item">
+          <b>Homemade Lolly</b>
+          <p id="hmLolly-price">100 Lollies</p>
+          <p><span id="hmLolly-count">0</span> Owned</p>
+          <p class="desc">Homemade lollies are better than store bought ones!</p>
+          <b><span id="hmLolly-lps">3</span> lollies/sec</b>
+          <button class="buy" id="hmLolly">Buy</button>
+        </li>
+        <li class="sep">
+          <b>-------------------------------------------------</b>
+        </li>
+        <li class="item">
+          <b>Lolly Artist</b>
+          <p><span id="lollyArtist-price">750</span> Lollies</p>
+          <p><span id="lollyArtist-count">0</span> Owned</p>
+          <p class="desc">A personal Lolly Artist!</p>
+          <b><span id="lollyArtist-lps">17.5</span> lollies/sec</b>
+          <button class="buy" id="lollyArtist">Buy</button>
+        </li>
+        <li class="sep">
+          <b>-------------------------------------------------</b>
+        </li>
+        <li class="item">
+          <b>Lolly Factory</b>
+          <p><span id="fac-price">5000</span> Lollies</p>
+          <p><span id="fac-count">0</span> Owned</p>
+          <p class="desc">A Lolly Factory!</p>
+          <b><span id="fac-lps">175</span> lollies/sec</b>
+          <button class="buy" id="fac">Buy</button>
+        </li>
+      </ul>
     </div>
-    <script src="game.js"></script>
-  </body>
+    <div id="upgrades">
+      <ul>
+        <li class="item">
+          <b>Sugar</b>
+          <p>1000 Lollies</p>
+          <p class="desc">Sugar for your lollies!</p>
+          <button class="buy" id="sugar">Buy</button>
+        </li>
+        <li class="sep">
+          <b>--------------------------------------</b>
+        </li>
+        <li class="item">
+          <b>Artificial Sweeteners</b>
+          <p>7500 Lollies</p>
+          <p class="desc">Artificial sweetener for your lollies!</p>
+          <button class="buy" id="fakeSugar">Buy</button>
+        </li>
+        <li class="sep">
+          <b>--------------------------------------</b>
+        </li>
+        <li class="item">
+          <b>Better Mouse</b>
+          <p>15000 Lollies</p>
+          <p class="desc">A better mouse to click with!</p>
+          <button class="buy" id="betterMouse">Buy</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="story-block">
+    <p id="story">
+      dis will be a story
+    </p>
+  </div>
+  <script src="game.js"></script>
+</body>
+
 </html>

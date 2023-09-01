@@ -1,3 +1,5 @@
+const story: HTMLElement | null = document.getElementById("story")
+
 let lollies: number = 0;
 const lollyButton: HTMLElement | null = document.getElementById("lButton")
 const lollyCount: HTMLElement | null = document.getElementById("lollies")
@@ -41,6 +43,9 @@ let sugarPrice: number = 1000;
 
 const fakeSugarButton: HTMLElement | null = document.getElementById("fakeSugar")
 let fakeSugarPrice: number = 1000;
+
+const betterMouseButton: HTMLElement | null = document.getElementById("betterMouse")
+let betterMousePrice: number = 15000;
 
 lollyButton?.addEventListener("click", () => {
   if (lollyCount == null) {
@@ -156,12 +161,27 @@ function buyFakeSugar() {
   }
 }
 
+function buyBetterMouse() {
+  if (lollyCount == null || passiveLollyCount == null || betterMouseButton == null) {
+    return
+  }
+  if (lollies >= sugarPrice) {
+    console.log("Sufficient lollies")
+    lollies -= sugarPrice;
+    clickPower = 10;
+    lollyCount.textContent = lollies.toFixed(1);
+    betterMouseButton.style.display = "none"
+  }
+}
+
 gSnakeButton?.addEventListener("click", buygSnake)
 hmLollyButton?.addEventListener("click", buyHmLolly)
 lollyArtistButton?.addEventListener("click", buyLollyArtist)
 facButton?.addEventListener("click", buyFac)
+
 sugarButton?.addEventListener("click", buySugar)
 fakeSugarButton?.addEventListener("click", buyFakeSugar)
+betterMouseButton?.addEventListener("click", buyBetterMouse)
 
 
 setInterval(() => {
@@ -172,3 +192,35 @@ setInterval(() => {
     lollyCount.textContent = lollies.toFixed(1);
   }
 }, 1000);
+
+setInterval(() => {
+  if (lollies < 100 && story != null) {
+    const stories: string[] = [
+      "You decide to start making lollies.",
+      "You offer your family some of your lollies. They leave without a response.",
+      "Your first batch goes straight into the bin. Not even flies go near it."
+    ]
+    story.textContent = stories[Math.floor(Math.random() * stories.length)]
+  } else if (lollies < 500 && lollies > 100 && story != null) {
+    const stories: string[] = [
+      "You start selling lollies to your neighbour. You suspect he is giving them to his cats.",
+      "You offer your family some of your lollies. They decide to try one.",
+      "You think your friends are selling your lollies on eBay."
+    ]
+    story.textContent = stories[Math.floor(Math.random() * stories.length)]
+  } else if (lollies < 10000 && lollies > 500 && story != null) {
+    const stories: string[] = [
+      "Your lollies are getting popular in your town.",
+      "Your family now asks for lollies because they say they taste good.",
+      "Your friends are making mysterious profits. Maybe they did sell your lollies..."
+    ]
+    story.textContent = stories[Math.floor(Math.random() * stories.length)]
+  } else if (lollies > 10000 && story != null) {
+    const stories: string[] = [
+      "People come from far away to get a taste of your lollies.",
+      "You decided to put one of your lollies up for auction. Someone bidded $43 000 for one.",
+      "There is a museum with your first ever lolly. It isn't popular, but it is there. You go every day."
+    ]
+    story.textContent = stories[Math.floor(Math.random() * stories.length)]
+  }
+}, 10000);
