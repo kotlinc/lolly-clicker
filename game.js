@@ -29,6 +29,10 @@ var facCount = document.getElementById("fac-count");
 var facsOwned = 0;
 var facRate = 17.5;
 var facPrice = 750;
+var sugarButton = document.getElementById("sugar");
+var sugarPrice = 1000;
+var fakeSugarButton = document.getElementById("fakeSugar");
+var fakeSugarPrice = 1000;
 lollyButton === null || lollyButton === void 0 ? void 0 : lollyButton.addEventListener("click", function () {
     if (lollyCount == null) {
         console.log("Lolly Count is null");
@@ -102,10 +106,46 @@ function buyFac() {
         facCount.textContent = String(hmLolliesOwned);
     }
 }
+function buySugar() {
+    if (lollyCount == null || passiveLollyCount == null || sugarButton == null) {
+        return;
+    }
+    if (lollies >= sugarPrice) {
+        console.log("Sufficient lollies");
+        lollies -= sugarPrice;
+        passiveLollies += 50;
+        lollyCount.textContent = lollies.toFixed(1);
+        sugarButton.style.display = "none";
+    }
+}
+function buyFakeSugar() {
+    if (lollyCount == null || passiveLollyCount == null || fakeSugarButton == null || hmLollyCount == null || hmLollyCost == null) {
+        return;
+    }
+    if (lollies >= sugarPrice) {
+        console.log("Sufficient lollies");
+        lollies -= sugarPrice;
+        passiveLollies += 50;
+        for (var i = 0; i <= 2; i++) {
+            console.log("Sufficient lollies");
+            hmLolliesOwned++;
+            lollies -= hmLollyPrice;
+            hmLollyPrice *= increment;
+            passiveLollies += hmLollyRate;
+            hmLollyCost.textContent = hmLollyPrice.toFixed(1);
+            lollyCount.textContent = lollies.toFixed(1);
+            passiveLollyCount.textContent = passiveLollies.toFixed(1);
+            hmLollyCount.textContent = String(hmLolliesOwned);
+        }
+        lollyCount.textContent = lollies.toFixed(1);
+        fakeSugarButton.style.display = "none";
+    }
+}
 gSnakeButton === null || gSnakeButton === void 0 ? void 0 : gSnakeButton.addEventListener("click", buygSnake);
 hmLollyButton === null || hmLollyButton === void 0 ? void 0 : hmLollyButton.addEventListener("click", buyHmLolly);
 lollyArtistButton === null || lollyArtistButton === void 0 ? void 0 : lollyArtistButton.addEventListener("click", buyLollyArtist);
 facButton === null || facButton === void 0 ? void 0 : facButton.addEventListener("click", buyFac);
+sugarButton === null || sugarButton === void 0 ? void 0 : sugarButton.addEventListener("click", buySugar);
 setInterval(function () {
     if (lollyCount == null) {
         console.log("Lolly Count is null");
