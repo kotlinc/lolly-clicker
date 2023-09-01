@@ -8,3 +8,5 @@ lollyButton.addEventListener("click", () => {
   lollies += clickPower;
   lollyCount.textContent = lollies;
 });
+
+export { lollies }
