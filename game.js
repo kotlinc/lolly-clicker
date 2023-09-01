@@ -146,6 +146,7 @@ hmLollyButton === null || hmLollyButton === void 0 ? void 0 : hmLollyButton.addE
 lollyArtistButton === null || lollyArtistButton === void 0 ? void 0 : lollyArtistButton.addEventListener("click", buyLollyArtist);
 facButton === null || facButton === void 0 ? void 0 : facButton.addEventListener("click", buyFac);
 sugarButton === null || sugarButton === void 0 ? void 0 : sugarButton.addEventListener("click", buySugar);
+fakeSugarButton === null || fakeSugarButton === void 0 ? void 0 : fakeSugarButton.addEventListener("click", buyFakeSugar);
 setInterval(function () {
     if (lollyCount == null) {
         console.log("Lolly Count is null");

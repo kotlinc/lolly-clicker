@@ -161,6 +161,7 @@ hmLollyButton?.addEventListener("click", buyHmLolly)
 lollyArtistButton?.addEventListener("click", buyLollyArtist)
 facButton?.addEventListener("click", buyFac)
 sugarButton?.addEventListener("click", buySugar)
+fakeSugarButton?.addEventListener("click", buyFakeSugar)
 
 
 setInterval(() => {
